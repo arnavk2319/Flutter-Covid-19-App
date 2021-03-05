@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "180453504208",
+    "firebase_url": "https://recollectionapp-296608.firebaseio.com",
+    "project_id": "recollectionapp-296608",
+    "storage_bucket": "recollectionapp-296608.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180453504208:android:299e116f2a6a5564ffdad5",
+        "android_client_info": {
+          "package_name": "akapplications.arnav.com.recollection_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180453504208-a0u2nlbuapndqif4r2upim7cc68o7dq0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "akapplications.arnav.com.recollection_app",
+            "certificate_hash": "1d9bbb6ba05924af8e8230098d26dbea331a9600"
+          }
+        },
+        {
+          "client_id": "180453504208-ormdni3o1p79dgd4ep77f2cqtr6trabb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD96dILYlM4guOrEOCgWppMwa0SxPVTl7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180453504208-ormdni3o1p79dgd4ep77f2cqtr6trabb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
