@@ -1,53 +1,49 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_web_browser/flutter_web_browser.dart';
-import 'package:recollection_app/controller/news_controller.dart';
-import 'package:recollection_app/main.dart';
-import 'package:recollection_app/screens/map_activity.dart';
+import 'package:flutter/material.dart';
+import 'package:recollection_app/widgets/vaccines_tab.dart';
+import 'package:recollection_app/widgets/doses_by_country_tab.dart';
+import 'package:flutter/rendering.dart';
+import 'package:recollection_app/controller/vaccine_controller.dart';
 import 'package:recollection_app/screens/country_news_activity.dart';
-import 'package:recollection_app/screens/world_news_activity.dart';
+import 'package:recollection_app/screens/map_activity.dart';
 import 'package:recollection_app/screens/login.dart';
-import 'package:recollection_app/screens/vaccine_tracker_activity.dart';
+import 'package:recollection_app/screens/world_news_activity.dart';
+import 'package:recollection_app/screens/news_activity.dart';
 import 'package:recollection_app/widgets/GoogleAuth.dart';
-import 'package:recollection_app/widgets/search_news_tab.dart';
-import 'package:recollection_app/widgets/world_news_tab.dart';
+import 'package:recollection_app/main.dart';
+import 'dart:core';
 
-class NewsActivity extends StatefulWidget {
+class VaccineNewsActivity extends StatefulWidget {
   @override
-  _NewsActivityState createState() => _NewsActivityState();
+  _VaccineNewsActivityState createState() => _VaccineNewsActivityState();
 }
 
-class _NewsActivityState extends State<NewsActivity>{
+class _VaccineNewsActivityState extends State<VaccineNewsActivity> {
 
-  var bookmarkPressed = true;
   int tabIndex = 0;
 
   List<Widget> tabScreens;
   ScrollController _scrollController = ScrollController();
 
+
   void initState() {
     super.initState();
     tabScreens = [
-      WorldNewsTab(),
-      SearchNewsTab(),
+      VaccinesTab(),
+      DosesByCountryTab(),
     ];
   }
 
-  // This function is triggered when the user presses the back-to-top button
   void _scrollToTop() {
     _scrollController.animateTo(0, duration: Duration(seconds: 3), curve: Curves.linear);
   }
 
   @override
   Widget build(BuildContext context) {
-
-    const paleLavender = const Color(0xffdcd0ff);
-
     return Scaffold(
       appBar: AppBar(
-        title: Text("COVID-19 News", style: TextStyle(fontFamily: 'QuickSand')),
+        title: Text("Vaccine Tracker", style: TextStyle(fontFamily: 'QuickSand')),
       ),
-      backgroundColor: paleLavender,
       drawer: Drawer(
           child : ListView(
               padding : EdgeInsets.zero,
@@ -167,7 +163,6 @@ class _NewsActivityState extends State<NewsActivity>{
               ]
           )
       ),
-      // body: tabScreens[tabIndex],
       body: NestedScrollView(
         controller: _scrollController,
         headerSliverBuilder: (BuildContext context, bool boxIsScrolled){
@@ -178,7 +173,7 @@ class _NewsActivityState extends State<NewsActivity>{
           ];
         },
         body: tabScreens[tabIndex],
-        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey[400],
@@ -191,12 +186,12 @@ class _NewsActivityState extends State<NewsActivity>{
           },
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.blur_circular_outlined),
-              label: 'World News',
+              icon: Icon(Icons.medical_services),
+              label: 'Vaccines',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search_outlined),
-              label: 'Search',
+              icon: Icon(Icons.control_point_duplicate),
+              label: 'Doses By Country',
             ),
           ]
       ),

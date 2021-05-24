@@ -8,7 +8,7 @@ import 'package:recollection_app/screens/country_news_activity.dart';
 import 'package:recollection_app/screens/news_activity.dart';
 import 'package:recollection_app/screens/login.dart';
 import 'package:recollection_app/controller/covid_controller.dart';
-import 'package:recollection_app/screens/vaccine_new_activity.dart';
+import 'package:recollection_app/screens/vaccine_tracker_activity.dart';
 import 'package:recollection_app/widgets/GoogleAuth.dart';
 
 class WorldNewsActivity extends StatefulWidget {

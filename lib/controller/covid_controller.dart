@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:recollection_app/model/country_model.dart';
 import 'package:recollection_app/model/covid_model.dart';
 import 'package:http/http.dart' as http;
@@ -76,7 +75,6 @@ class CovidController{
           }
         }
       }
-      // print(topCountriesDataSet);
       return topCountriesDataSet.toList();
     }
     else{
@@ -104,7 +102,6 @@ class CovidController{
             };
           }
         }
-      // print(selectedCountryData);
       return selectedCountryData;
     }
     else{
@@ -128,9 +125,6 @@ class CovidController{
       for(int j=0;j<allCountryNames.length;j++){
         allCountryDetails.add(CountryModel.fromJson(allCountryNames.elementAt(j)));
       }
-
-      // print(allCountryDetails);
-      // return allCountryNames.toList();
     }
     else{
       print("Could not get response for all country list" + " " + response.statusCode.toString()) ;

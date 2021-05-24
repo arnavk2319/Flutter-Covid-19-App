@@ -69,7 +69,7 @@
     <key>FacebookDisplayName</key>
 
     <!-- Replace "YOUR_APP_NAME" with your Facebook App name. -->
-    <string>Recollection App</string>
+    <string>CoviUpdate</string>
 
     <key>LSApplicationQueriesSchemes</key>
     <array>

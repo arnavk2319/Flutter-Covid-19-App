@@ -6,7 +6,7 @@ import 'package:recollection_app/main.dart';
 import 'package:recollection_app/model/country_model.dart';
 import 'package:recollection_app/screens/map_activity.dart';
 import 'package:recollection_app/screens/world_news_activity.dart';
-import 'package:recollection_app/screens/vaccine_new_activity.dart';
+import 'package:recollection_app/screens/vaccine_tracker_activity.dart';
 import 'package:recollection_app/screens/news_activity.dart';
 import 'package:recollection_app/screens/login.dart';
 import 'package:recollection_app/widgets/GoogleAuth.dart';
@@ -148,41 +148,7 @@ class _CountryNewsActivityState extends State<CountryNewsActivity> {
                       child : Padding(
                         padding: EdgeInsets.all(6),
                         child: FittedBox(
-                            child: Text("M")
-                        ),
-                      ),
-                    ),
-                    title : Text("Map Activity"),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext ctx) => MapActivity()));
-                    },
-                  ),
-                  ListTile(
-                    contentPadding: EdgeInsets.all(6),
-                    leading: CircleAvatar(
-                      radius: 30,
-                      child : Padding(
-                        padding: EdgeInsets.all(6),
-                        child: FittedBox(
-                            child: Text("M")
-                        ),
-                      ),
-                    ),
-                    title : Text("World COVID-19 News"),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext ctx) => WorldNewsActivity()));
-                    },
-                  ),
-                  ListTile(
-                    contentPadding: EdgeInsets.all(6),
-                    leading: CircleAvatar(
-                      radius: 30,
-                      child : Padding(
-                        padding: EdgeInsets.all(6),
-                        child: FittedBox(
-                            child: Text("M")
+                            child: Icon(Icons.colorize_outlined)
                         ),
                       ),
                     ),
@@ -199,11 +165,11 @@ class _CountryNewsActivityState extends State<CountryNewsActivity> {
                       child : Padding(
                         padding: EdgeInsets.all(6),
                         child: FittedBox(
-                            child: Text("M")
+                            child: Icon(Icons.pie_chart_outline_outlined)
                         ),
                       ),
                     ),
-                    title : Text("Country-wise COVID-19 News"),
+                    title : Text("Country-wise Stats"),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext ctx) => CountryNewsActivity()));
@@ -216,7 +182,7 @@ class _CountryNewsActivityState extends State<CountryNewsActivity> {
                       child : Padding(
                         padding: EdgeInsets.all(6),
                         child: FittedBox(
-                            child: Text("M")
+                            child: Icon(Icons.my_library_books_outlined)
                         ),
                       ),
                     ),
@@ -233,11 +199,11 @@ class _CountryNewsActivityState extends State<CountryNewsActivity> {
                       child : Padding(
                         padding: EdgeInsets.all(6),
                         child: FittedBox(
-                            child: Text("M")
+                            child: Icon(Icons.masks_outlined)
                         ),
                       ),
                     ),
-                    title : Text("Home"),
+                    title : Text("Overview"),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext ctx) => MyHomePage()));
@@ -251,7 +217,7 @@ class _CountryNewsActivityState extends State<CountryNewsActivity> {
                         child : Padding(
                           padding: EdgeInsets.all(6),
                           child: FittedBox(
-                              child: Text("L")
+                              child: Icon(Icons.logout)
                           ),
                         ),
                       ),

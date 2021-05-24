@@ -36,6 +36,8 @@ dependencies:
   liquid_progress_indicator: ^0.3.2
   autocomplete_textfield: ^1.7.3
   webview_flutter: ^1.0.7
+  email_validator: ^2.0.1
+  flutter_launcher_icons: ^0.9.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -44,6 +46,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  image_path_android: "assets/images/CoviUpdate-logo.PNG"
+  image_path_ios: "assets/images/CoviUpdate-logo.PNG"
+  android: true
+  ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -64,6 +72,11 @@ flutter:
     - assets/images/3odnsIE.png
     - assets/images/google.jpg
     - assets/images/facebookpublisher.jpg
+    - assets/images/vaccine.jpg
+    - assets/images/vaccineVial.jpg
+    - assets/images/covid-19-expanded-banner.jpg
+    - assets/images/covid-19-collapsed-banner.jpg
+    - assets/images/covid-19-banner.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

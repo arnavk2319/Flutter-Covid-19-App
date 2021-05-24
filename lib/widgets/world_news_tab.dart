@@ -2,14 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
 import 'package:recollection_app/controller/news_controller.dart';
-import 'package:recollection_app/main.dart';
-import 'package:recollection_app/screens/map_activity.dart';
-import 'package:recollection_app/screens/country_news_activity.dart';
-import 'package:recollection_app/screens/world_news_activity.dart';
-import 'package:recollection_app/screens/news_activity.dart';
-import 'package:recollection_app/screens/login.dart';
-import 'package:recollection_app/screens/vaccine_new_activity.dart';
-import 'package:recollection_app/widgets/GoogleAuth.dart';
 
 class WorldNewsTab extends StatefulWidget {
   WorldNewsTab({Key key}) : super(key: key);
@@ -28,23 +20,24 @@ class _WorldNewsTabState extends State<WorldNewsTab> {
         // height : MediaQuery.of(context).size.height * 2,
         // margin: EdgeInsets.all(15),
         child: FutureBuilder(
-            future: NewsController.getWorldNews(),
-            builder: (context,
-                AsyncSnapshot<List<Map<String, String>>> snapshot) {
-              // return createNewsListChildren(context, snapshot);
-              return ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  scrollDirection: Axis.vertical,
+            future: NewsController.getSearchNews("covid-19"),
+            builder: (context, AsyncSnapshot<List<Map<String, String>>> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting){
+                return Center(
+                  //replace this with a loading icon
+                    child: new CircularProgressIndicator()
+                );
+              }
+              else{
+                return GridView.count(
                   shrinkWrap: true,
-                  itemCount: snapshot.data == null ? 0 : 10,
-                  itemBuilder: (BuildContext context, int index) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
-                        //replace this with a loading icon
-                          child: new CircularProgressIndicator()
-                      );
-                    } else {
-                      return Padding(
+                  primary: false,
+                  padding: const EdgeInsets.all(10),
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  crossAxisCount: 1,
+                  children: List.generate(snapshot.data.length, (index) =>
+                      Padding(
                           padding: EdgeInsets.all(10),
                           child: Center(
                             child: Card(
@@ -53,8 +46,7 @@ class _WorldNewsTabState extends State<WorldNewsTab> {
                                   splashColor: Colors.blue.withAlpha(30),
                                   onTap: () {
                                     FlutterWebBrowser.openWebPage(
-                                      url: snapshot.data.elementAt(
-                                          index)['url'],
+                                      url: snapshot.data.elementAt(index)['url'],
                                       customTabsOptions: CustomTabsOptions(
                                         colorScheme: CustomTabsColorScheme.dark,
                                         toolbarColor: Colors.deepPurple,
@@ -75,7 +67,7 @@ class _WorldNewsTabState extends State<WorldNewsTab> {
                                             snapshot.data[index]['urlToImage']),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(20),
+                                        padding: EdgeInsets.all(15),
                                         child: Text(
                                           // snapshot.data[index]['title'],
                                           snapshot.data[index]['title'],
@@ -90,9 +82,10 @@ class _WorldNewsTabState extends State<WorldNewsTab> {
                                       Padding(
                                         padding: EdgeInsets.all(10),
                                         child: Text(
-                                          snapshot.data[index]['author'],
+                                          snapshot.data[index]['author'].toString(),
                                           textAlign: TextAlign.left,
                                           overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
                                           style: TextStyle(
                                             fontWeight: FontWeight.normal,
                                             fontSize: 14,
@@ -102,32 +95,19 @@ class _WorldNewsTabState extends State<WorldNewsTab> {
                                       Padding(
                                           padding: EdgeInsets.all(10),
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment
-                                                .spaceAround,
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                                             children: <Widget>[
-                                              // IconButton(
-                                              //   icon: new Icon( bookmarkPressed ?
-                                              //       Icons.bookmark_border : Icons.bookmark,
-                                              //       size: 30.0,
-                                              //   ),
-                                              //   color: Colors.purple,
-                                              //   onPressed: (){
-                                              //     setState(() {
-                                              //       bookmarkPressed = !bookmarkPressed;
-                                              //     });
-                                              //   },
-                                              // ),
                                               InkWell(
                                                 splashColor: Colors.purple
                                                     .withAlpha(30),
                                                 child: new Text(
-                                                  'See More',
-                                                  style: TextStyle(
-                                                      color: Colors.purple,
-                                                      fontWeight: FontWeight
-                                                          .bold,
-                                                      fontSize: 17.0
-                                                  )
+                                                    'See More',
+                                                    style: TextStyle(
+                                                        color: Colors.purple,
+                                                        fontWeight: FontWeight
+                                                            .bold,
+                                                        fontSize: 17.0
+                                                    )
                                                 ),
                                                 onTap: () {
                                                   FlutterWebBrowser.openWebPage(
@@ -160,10 +140,13 @@ class _WorldNewsTabState extends State<WorldNewsTab> {
                               ),
                             ),
                           )
-                      );
-                    }
-                  }
-              );
+                      )
+                    // )
+                  ),
+                );
+              }
+              // return createNewsListChildren(context, snapshot);
+
             }
         ),
       ),
